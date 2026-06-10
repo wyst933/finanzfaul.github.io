@@ -1,0 +1,1 @@
+# finanzfaul.github.io
