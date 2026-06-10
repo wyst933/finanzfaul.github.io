@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>finanzfaul. | Der Podcast für entspanntes Vermögen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #151b2c;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #00f2fe; /* Modernes Mint/Cyan */
+            --accent-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header / Nav */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+        }
+
+        .logo span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-left: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5% 8rem 5%;
+        }
+
+        /* Hero / New Episode Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+            .player-container {
+                margin: 0 auto;
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--accent);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        /* Fake Audio Player (Stylisch & Minimal) */
+        .player-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .player-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-gradient);
+        }
+
+        .episode-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .episode-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Hier binden wir später den echten Player ein, vorerst ein Platzhalter */
+        .audio-placeholder {
+            width: 100%;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Streaming Buttons */
+        .streaming-platforms {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .platform-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            padding: 0.75rem;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.85rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .platform-btn:hover {
+            background: var(--text-main);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+        }
+
+        /* Pitch Section */
+        .pitch-section {
+            margin-top: 8rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 5rem;
+        }
+
+        .pitch-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .pitch-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pitch-card {
+            background: transparent;
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .pitch-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pitch-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">finanz<span>faul.</span></div>
+        <nav class="nav-links">
+            <a href="#episodes">Folgen</a>
+            <a href="#about">Über den Podcast</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <!-- Linke Seite: Marketing-Text -->
+            <div class="hero-text">
+                <span class="badge">Brandneu</span>
+                <h1>Minimaler Aufwand.<br>Maximaler Ertrag.</h1>
+                <p class="subtitle">Der Podcast für alle, die ihr Geld lieber für sich arbeiten lassen, anstatt selbst rund um die Uhr dafür zu schuften. Keine Buzzwords, kein Stress.</p>
+            </div>
+
+            <!-- Rechte Seite: Fokus auf die neue Folge -->
+            <div class="player-container">
+                <div class="player-card">
+                    <div class="episode-meta">Folge #24 &bull; 28 Min. &bull; Jetzt verfügbar</div>
+                    <div class="episode-title">Warum dein Sparbuch dich heimlich bestiehlt (und die faule Alternative)</div>
+                    
+                    <!-- ECHTER AUDIO PLAYER PLATZHALTER -->
+                    <!-- Ersetze dieses div später einfach mit dem Embed-Code deines Podcast-Hosters (z.B. Spotify, Podigee, Anchor) -->
+                    <div class="audio-placeholder">
+                        <span>[ Hier Hoster-Player einbetten ]</span>
+                    </div>
+
+                    <!-- Direkt-Links zu den Plattformen -->
+                    <div class="streaming-platforms">
+                        <a href="#" class="platform-btn" target="_blank">Spotify</a>
+                        <a href="#" class="platform-btn" target="_blank">Apple Pod.</a>
+                        <a href="#" class="platform-btn" target="_blank">Google Pod.</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Drei unschlagbare Argumente für den Podcast -->
+        <section class="pitch-section" id="about">
+            <h2>Finanzen verstehen – ohne Kopfschmerzen.</h2>
+            <div class="pitch-grid">
+                <div class="pitch-card">
+                    <h3>Radikal pragmatisch</h3>
+                    <p>Wir kauen die komplexen Finanzmärkte so weit herunter, dass du nach jeder Folge sofort weißt, was zu tun ist. Ohne Bullshit-Bingo.</p>
+                </div>
+                <div class="pitch-card">
+                    <h3>Für Faule optimiert</h3>
+                    <p>Finanzielle Freiheit braucht keine 60-Stunden-Woche. Wir zeigen dir automatisierte Systeme, die im Hintergrund laufen.</p>
+                </div>
+                <div class="pitch-card">
+                    <h3>Unabhängig & Ehrlich</h3>
+                    <p>Keine versteckten Produktplatzierungen, keine schmierigen Berater-Tricks. Nur ehrliches Wissen für deinen Vermögensaufbau.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 finanzfaul. | <a href="#" style="color: inherit; text-decoration: none;">Impressum & Datenschutz</a></p>
+    </footer>
+
+</body>
+                      </html>
+                      
